@@ -4,8 +4,11 @@ import PropTypes from "prop-types";
 import FromHandlingButton from "../../../common/From/FromHandlingButton.jsx";
 
 const ProductWarrantyDerailsForm = ({ handelePrevFormerendering }) => {
+
+
   return (
     <form className="max-w-sm mx-auto">
+        <button type='button' onClick={handelePrevFormerendering}>Go back</button>
       <div>
         <h1 className="text-lg font-bold">Product Warranty Details</h1>
       </div>
@@ -25,10 +28,7 @@ const ProductWarrantyDerailsForm = ({ handelePrevFormerendering }) => {
         name="warranty_Start_Date"
       />
 
-      <FromHandlingButton
-        executingMethod={handelePrevFormerendering}
-        buttonName="Back to Product Detailes"
-      />
+
     </form>
   );
 };

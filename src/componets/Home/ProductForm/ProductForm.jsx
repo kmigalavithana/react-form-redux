@@ -5,6 +5,12 @@ import { useState } from "react";
 const ProductForm = () => {
   const [curruntForm, setCurruntForm] = useState(1);
 
+  const [productBasicDetails, setProductBasicDetails] = useState({
+    product_name: '',
+    product_Quantity: 0,
+    product_Price: 0,
+  })
+
   const handeleNextFormerendering = () => {
     setCurruntForm((prevState) => prevState + 1);
   };
@@ -16,6 +22,8 @@ const ProductForm = () => {
   const productformMapper = {
     1: (
       <ProductBasicDetaislForm
+          productBasicDetails={productBasicDetails}
+          setProductBasicDetails={setProductBasicDetails}
         handeleNextFormerendering={handeleNextFormerendering}
       />
     ),

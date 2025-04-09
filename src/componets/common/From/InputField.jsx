@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-const InputField = ({ type, name, lablename, handleInputFeild }) => {
+const InputField = ({ type, name,value, lablename, handleInputFeild }) => {
   return (
     <div className="mb-5">
       <label
@@ -14,6 +14,7 @@ const InputField = ({ type, name, lablename, handleInputFeild }) => {
         name={name}
         className="Inputfeield"
         onChange={handleInputFeild}
+        defaultValue={value || ''}
         required
       />
     </div>
@@ -25,5 +26,6 @@ InputField.defaultProps = {
   lablename: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   handleInputFeild: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
 };
 export default InputField;

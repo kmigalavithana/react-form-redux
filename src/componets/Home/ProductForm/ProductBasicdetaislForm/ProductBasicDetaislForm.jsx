@@ -2,8 +2,12 @@ import InputField from "../../../common/From/InputField.jsx";
 import PropTypes from "prop-types";
 import FromHandlingButton from "../../../common/From/FromHandlingButton.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { storeproductBasicdetails } from "../../../../utilities/slice/productbasicDetailsSlice.js";
+import {
+  resetProductBasicdetails,
+  storeproductBasicdetails,
+} from "../../../../utilities/slice/productbasicDetailsSlice.js";
 import { useEffect, useState } from "react";
+import reset from '../../../../assets/icons/undo.png'
 
 const ProductBasicDetaislForm = ({
   handeleNextFormerendering,
@@ -33,13 +37,19 @@ const ProductBasicDetaislForm = ({
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(storeproductBasicdetails(productBasicDetails));
+    dispatch(storeproductBasicdetails(existingProductDetails));
     handeleNextFormerendering();
   };
 
-  console.log(existingProductDetails);
+  const resetBasicDetailsForm = () => {
+    dispatch(resetProductBasicdetails());
+  };
+
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+      <button type="button" onClick={resetBasicDetailsForm}>
+          <img src={reset} alt="Reset Basic Details" />
+      </button>
       <div>
         <h1 className="text-lg font-bold">Product Basic Details</h1>
       </div>
@@ -56,7 +66,6 @@ const ProductBasicDetaislForm = ({
         name="product_Quantity"
         value={productBasicDetails.product_Quantity}
         handleInputFeild={handleInputFeild}
-
       />
       <InputField
         type="number"
@@ -64,7 +73,6 @@ const ProductBasicDetaislForm = ({
         name="product_Price"
         value={productBasicDetails.product_Price}
         handleInputFeild={handleInputFeild}
-
       />
       <FromHandlingButton buttonName="Fill Warranty Detailes" />
     </form>
